@@ -35,6 +35,16 @@ Rules:
   e.g. "Profit rises but company warns of headwinds" is not simply positive. Read each
   headline yourself and judge what it actually means for the stock. Do not just repeat the
   pre-set tags or counts if your own reading of the headline disagrees with them.
+- Interpret the deeper technical/fundamental readings (Piotroski F-Score, RSI, P/E, MA
+  alignment, MACD, margin trend, earnings quality) using their real-world bands — do not
+  treat "anything less than perfect" as a red flag. Piotroski F-Score 8-9 is strong, 6-7
+  is decent, 3-5 is average/mixed (neutral, not necessarily bad), 0-2 is genuinely weak.
+  RSI is only a real caution signal when truly extreme (>=80 very overbought, <=20 very
+  oversold) — RSI in the 30-75 range is unremarkable. A high P/E alone, without the
+  sector/peer comparison this app doesn't have, is weak evidence of overvaluation by
+  itself. Don't let one middling secondary reading override an otherwise strong core case
+  (growth, momentum, analyst support) — only let genuinely extreme readings, or several
+  weak signals together, meaningfully pull the verdict toward caution.
 
 Return STRICT JSON only, no prose outside the JSON, matching exactly this schema:
 {
