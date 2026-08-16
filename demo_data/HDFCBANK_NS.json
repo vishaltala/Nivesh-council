@@ -1,0 +1,66 @@
+{
+  "symbol": "HDFCBANK.NS",
+  "name": "HDFC Bank Ltd",
+  "cap_segment": "large",
+  "sector": "Financial Services",
+  "price": {
+    "live": 1698.75,
+    "day_open": 1670.0,
+    "day_high": 1705.0,
+    "day_low": 1668.0,
+    "prev_close": 1665.3,
+    "day_change_pct": 2.01,
+    "volume": 15600000
+  },
+  "range_52w": {
+    "high": 1794.0,
+    "low": 1363.55,
+    "pct_from_high": -5.31,
+    "position_pct": 77.9
+  },
+  "technicals": {
+    "rvol": 3.4,
+    "price_vs_sma_pct": 3.8,
+    "window_return_pct": 5.2,
+    "swing_high": 1710.0,
+    "swing_low": 1560.0,
+    "day_range_position_pct": 83.1,
+    "trend": "up"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 45,
+    "buy_pct": 87.0,
+    "hold_pct": 11.0,
+    "sell_pct": 2.0,
+    "target_mean": 1880.0,
+    "target_low": 1700.0,
+    "target_high": 2050.0,
+    "upside_pct": 10.67
+  },
+  "news": {
+    "total": 4,
+    "positive": 4,
+    "negative": 0,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "HDFC Bank posts strong deposit growth in Q2",
+        "tone": "positive"
+      },
+      {
+        "title": "Asset quality steady, NPAs contained: management",
+        "tone": "positive"
+      },
+      {
+        "title": "Brokerages raise target price after earnings beat",
+        "tone": "positive"
+      },
+      {
+        "title": "Bank stocks rally on RBI liquidity comments",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

@@ -1,0 +1,58 @@
+{
+  "symbol": "ICICIBANK.NS",
+  "name": "ICICI Bank Ltd",
+  "cap_segment": "large",
+  "sector": "Financial Services",
+  "price": {
+    "live": 1245.6,
+    "day_open": 1250.0,
+    "day_high": 1258.0,
+    "day_low": 1238.0,
+    "prev_close": 1252.4,
+    "day_change_pct": -0.54,
+    "volume": 8200000
+  },
+  "range_52w": {
+    "high": 1361.0,
+    "low": 970.9,
+    "pct_from_high": -8.48,
+    "position_pct": 70.4
+  },
+  "technicals": {
+    "rvol": 1.1,
+    "price_vs_sma_pct": 0.6,
+    "window_return_pct": 1.8,
+    "swing_high": 1290.0,
+    "swing_low": 1190.0,
+    "day_range_position_pct": 38.0,
+    "trend": "sideways"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 40,
+    "buy_pct": 79.0,
+    "hold_pct": 18.0,
+    "sell_pct": 3.0,
+    "target_mean": 1390.0,
+    "target_low": 1250.0,
+    "target_high": 1520.0,
+    "upside_pct": 11.59
+  },
+  "news": {
+    "total": 2,
+    "positive": 1,
+    "negative": 1,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "ICICI Bank net profit rises on strong loan growth",
+        "tone": "positive"
+      },
+      {
+        "title": "Provisions inch up on unsecured retail book",
+        "tone": "negative"
+      }
+    ]
+  },
+  "data_gaps": []
+}

@@ -1,0 +1,14 @@
+# Secrets — never commit real credentials. Copy .env.example to .env locally.
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Local runtime data / generated output
+agent_dashboard.db
+buy_logs/
+
+# OS junk
+.DS_Store

@@ -1,0 +1,58 @@
+{
+  "symbol": "CAMPUS.NS",
+  "name": "Campus Activewear Ltd",
+  "cap_segment": "small",
+  "sector": "Consumer Goods",
+  "price": {
+    "live": 298.4,
+    "day_open": 287.0,
+    "day_high": 302.0,
+    "day_low": 286.0,
+    "prev_close": 284.9,
+    "day_change_pct": 4.74,
+    "volume": 2100000
+  },
+  "range_52w": {
+    "high": 354.9,
+    "low": 215.1,
+    "pct_from_high": -15.92,
+    "position_pct": 59.6
+  },
+  "technicals": {
+    "rvol": 2.3,
+    "price_vs_sma_pct": 4.6,
+    "window_return_pct": 6.9,
+    "swing_high": 305.0,
+    "swing_low": 260.0,
+    "day_range_position_pct": 77.5,
+    "trend": "up"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 10,
+    "buy_pct": 70.0,
+    "hold_pct": 25.0,
+    "sell_pct": 5.0,
+    "target_mean": 335.0,
+    "target_low": 290.0,
+    "target_high": 380.0,
+    "upside_pct": 12.27
+  },
+  "news": {
+    "total": 2,
+    "positive": 2,
+    "negative": 0,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "Campus Activewear festive season sales strong",
+        "tone": "positive"
+      },
+      {
+        "title": "Retail footprint expansion on track",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

@@ -1,0 +1,28 @@
+{
+  "large": [
+    "ULTRACEMCO.NS",
+    "AMBUJACEM.NS",
+    "ACC.NS",
+    "SHREECEM.NS",
+    "ADANIPORTS.NS",
+    "IRCTC.NS",
+    "IRFC.NS"
+  ],
+  "mid": [
+    "DALBHARAT.NS",
+    "RAMCOCEM.NS",
+    "JKCEMENT.NS",
+    "CONCOR.NS",
+    "GMRINFRA.NS",
+    "DELHIVERY.NS",
+    "IRB.NS",
+    "MAZDOCK.NS",
+    "COCHINSHIP.NS",
+    "GRASIM.NS"
+  ],
+  "small": [
+    "INDIACEM.NS",
+    "NCC.NS",
+    "TRIDENT.NS"
+  ]
+}

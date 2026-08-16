@@ -1,0 +1,62 @@
+{
+  "symbol": "ASHOKLEY.NS",
+  "name": "Ashok Leyland Ltd",
+  "cap_segment": "mid",
+  "sector": "Automobile",
+  "price": {
+    "live": 228.9,
+    "day_open": 221.0,
+    "day_high": 231.5,
+    "day_low": 220.0,
+    "prev_close": 219.6,
+    "day_change_pct": 4.23,
+    "volume": 9700000
+  },
+  "range_52w": {
+    "high": 254.8,
+    "low": 157.05,
+    "pct_from_high": -10.16,
+    "position_pct": 73.5
+  },
+  "technicals": {
+    "rvol": 2.6,
+    "price_vs_sma_pct": 3.9,
+    "window_return_pct": 5.5,
+    "swing_high": 232.0,
+    "swing_low": 205.0,
+    "day_range_position_pct": 77.4,
+    "trend": "up"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 24,
+    "buy_pct": 75.0,
+    "hold_pct": 20.0,
+    "sell_pct": 5.0,
+    "target_mean": 255.0,
+    "target_low": 225.0,
+    "target_high": 290.0,
+    "upside_pct": 11.4
+  },
+  "news": {
+    "total": 3,
+    "positive": 2,
+    "negative": 0,
+    "neutral": 1,
+    "recent": [
+      {
+        "title": "Ashok Leyland CV sales volumes beat estimates",
+        "tone": "positive"
+      },
+      {
+        "title": "Export order book strengthens for FY",
+        "tone": "positive"
+      },
+      {
+        "title": "Raw material costs remain a margin watch item",
+        "tone": "neutral"
+      }
+    ]
+  },
+  "data_gaps": []
+}

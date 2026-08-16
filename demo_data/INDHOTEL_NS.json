@@ -1,0 +1,58 @@
+{
+  "symbol": "INDHOTEL.NS",
+  "name": "Indian Hotels Company Ltd",
+  "cap_segment": "mid",
+  "sector": "Hospitality",
+  "price": {
+    "live": 598.2,
+    "day_open": 610.0,
+    "day_high": 615.0,
+    "day_low": 592.0,
+    "prev_close": 612.4,
+    "day_change_pct": -2.32,
+    "volume": 3300000
+  },
+  "range_52w": {
+    "high": 816.35,
+    "low": 445.05,
+    "pct_from_high": -26.72,
+    "position_pct": 41.2
+  },
+  "technicals": {
+    "rvol": 0.9,
+    "price_vs_sma_pct": -2.3,
+    "window_return_pct": -1.1,
+    "swing_high": 650.0,
+    "swing_low": 580.0,
+    "day_range_position_pct": 27.0,
+    "trend": "down"
+  },
+  "analyst": {
+    "consensus": "hold",
+    "num_analysts": 20,
+    "buy_pct": 55.0,
+    "hold_pct": 32.0,
+    "sell_pct": 13.0,
+    "target_mean": 610.0,
+    "target_low": 520.0,
+    "target_high": 700.0,
+    "upside_pct": 1.97
+  },
+  "news": {
+    "total": 2,
+    "positive": 1,
+    "negative": 1,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "Indian Hotels occupancy rates dip in off-season",
+        "tone": "negative"
+      },
+      {
+        "title": "New property launches planned in tier-2 cities",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

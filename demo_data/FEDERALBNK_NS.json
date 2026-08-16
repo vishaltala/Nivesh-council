@@ -1,0 +1,62 @@
+{
+  "symbol": "FEDERALBNK.NS",
+  "name": "Federal Bank Ltd",
+  "cap_segment": "mid",
+  "sector": "Financial Services",
+  "price": {
+    "live": 215.4,
+    "day_open": 206.0,
+    "day_high": 218.0,
+    "day_low": 205.5,
+    "prev_close": 204.8,
+    "day_change_pct": 5.18,
+    "volume": 18400000
+  },
+  "range_52w": {
+    "high": 221.65,
+    "low": 127.55,
+    "pct_from_high": -2.82,
+    "position_pct": 93.4
+  },
+  "technicals": {
+    "rvol": 4.1,
+    "price_vs_sma_pct": 6.7,
+    "window_return_pct": 9.4,
+    "swing_high": 219.0,
+    "swing_low": 185.0,
+    "day_range_position_pct": 79.2,
+    "trend": "up"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 22,
+    "buy_pct": 86.0,
+    "hold_pct": 10.0,
+    "sell_pct": 4.0,
+    "target_mean": 245.0,
+    "target_low": 210.0,
+    "target_high": 270.0,
+    "upside_pct": 13.74
+  },
+  "news": {
+    "total": 3,
+    "positive": 3,
+    "negative": 0,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "Federal Bank posts record quarterly profit",
+        "tone": "positive"
+      },
+      {
+        "title": "Loan book grows 18% YoY, asset quality stable",
+        "tone": "positive"
+      },
+      {
+        "title": "Stock hits fresh 52-week high on strong volumes",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

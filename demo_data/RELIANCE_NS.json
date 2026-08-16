@@ -1,0 +1,122 @@
+{
+  "symbol": "RELIANCE.NS",
+  "name": "Reliance Industries Ltd",
+  "cap_segment": "large",
+  "sector": "Energy",
+  "price": {
+    "live": 2985.4,
+    "day_open": 2918.0,
+    "day_high": 3002.5,
+    "day_low": 2915.0,
+    "prev_close": 2912.1,
+    "day_change_pct": 2.52,
+    "volume": 9800000
+  },
+  "range_52w": {
+    "high": 3217.9,
+    "low": 2220.3,
+    "pct_from_high": -7.23,
+    "position_pct": 76.7
+  },
+  "technicals": {
+    "rvol": 2.8,
+    "price_vs_sma_pct": 4.2,
+    "window_return_pct": 6.1,
+    "swing_high": 3217.9,
+    "swing_low": 2220.3,
+    "day_range_position_pct": 80.5,
+    "trend": "up",
+    "sma_20": 2865.0,
+    "sma_50": 2800.0,
+    "sma_200": 2650.0,
+    "ma_alignment": "bullish",
+    "rsi_14": 62.5,
+    "rsi_signal": "neutral",
+    "macd": 18.5,
+    "macd_signal": 12.3,
+    "macd_histogram": 6.2,
+    "macd_trend": "bullish",
+    "bb_upper": 3050.0,
+    "bb_lower": 2780.0,
+    "bb_position_pct": 76.1
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 38,
+    "buy_pct": 82.0,
+    "hold_pct": 13.0,
+    "sell_pct": 5.0,
+    "target_mean": 3320.0,
+    "target_low": 2900.0,
+    "target_high": 3700.0,
+    "upside_pct": 11.21
+  },
+  "fundamentals": {
+    "pe_ttm": 23.9,
+    "pe_forward": 18.3,
+    "price_to_book": 1.96,
+    "roe_pct": 16.4,
+    "gross_margin_pct": 33.8,
+    "operating_margin_pct": 12.3,
+    "net_margin_pct": 6.6,
+    "revenue_growth_pct": 29.7,
+    "earnings_growth_pct": 8.5,
+    "debt_to_equity_pct": 36.7,
+    "current_ratio": 1.18,
+    "dividend_yield_pct": 0.46,
+    "promoter_insider_holding_pct": 51.8,
+    "institutional_holding_pct": 28.1,
+    "eps_ttm": 54.79,
+    "book_value_per_share": 668.05,
+    "free_cash_flow": 185000000000,
+    "market_cap": 17727538331648,
+    "beta": 0.85
+  },
+  "fundamentals_trend": {
+    "years_available": 4,
+    "net_margin_trend": "improving",
+    "revenue_growth_streak": "revenue grew in 3 of 3 year(s)",
+    "cfo_to_net_income_ratio": 2.38,
+    "earnings_quality": "healthy",
+    "piotroski_f_score": 7,
+    "piotroski_max": 9,
+    "piotroski_breakdown": [
+      "Positive net income: Yes",
+      "Positive operating cash flow: Yes",
+      "Return on assets improved YoY: Yes",
+      "Operating cash flow exceeds net income: Yes",
+      "Long-term debt ratio improved YoY: Yes",
+      "Current ratio improved YoY: No",
+      "No new shares issued (no dilution): Yes",
+      "Gross margin improved YoY: Yes",
+      "Asset turnover improved YoY: No"
+    ]
+  },
+  "news": {
+    "total": 3,
+    "positive": 2,
+    "negative": 0,
+    "neutral": 1,
+    "recent": [
+      {
+        "title": "Reliance Jio adds record subscribers in Q2",
+        "tone": "positive",
+        "source": "Yahoo Finance",
+        "published": "2026-08-14 09:12 IST"
+      },
+      {
+        "title": "Reliance retail arm eyes expansion into new cities",
+        "tone": "positive",
+        "source": "Yahoo Finance",
+        "published": "2026-08-13 21:45 IST"
+      },
+      {
+        "title": "Oil-to-chem margins steady amid global demand",
+        "tone": "neutral",
+        "source": "Economic Times",
+        "published": "2026-08-13 17:30 IST"
+      }
+    ]
+  },
+  "data_gaps": []
+}

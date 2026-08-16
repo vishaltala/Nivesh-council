@@ -1,0 +1,62 @@
+{
+  "symbol": "RAILTEL.NS",
+  "name": "RailTel Corporation of India",
+  "cap_segment": "small",
+  "sector": "Telecom Infra",
+  "price": {
+    "live": 412.8,
+    "day_open": 382.0,
+    "day_high": 421.0,
+    "day_low": 380.0,
+    "prev_close": 378.2,
+    "day_change_pct": 9.15,
+    "volume": 6800000
+  },
+  "range_52w": {
+    "high": 428.0,
+    "low": 178.1,
+    "pct_from_high": -3.55,
+    "position_pct": 93.9
+  },
+  "technicals": {
+    "rvol": 5.9,
+    "price_vs_sma_pct": 9.8,
+    "window_return_pct": 14.2,
+    "swing_high": 425.0,
+    "swing_low": 340.0,
+    "day_range_position_pct": 80.0,
+    "trend": "up"
+  },
+  "analyst": {
+    "consensus": "buy",
+    "num_analysts": 8,
+    "buy_pct": 88.0,
+    "hold_pct": 12.0,
+    "sell_pct": 0.0,
+    "target_mean": 460.0,
+    "target_low": 400.0,
+    "target_high": 520.0,
+    "upside_pct": 11.43
+  },
+  "news": {
+    "total": 3,
+    "positive": 3,
+    "negative": 0,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "RailTel wins new government network order",
+        "tone": "positive"
+      },
+      {
+        "title": "Stock surges on record order book",
+        "tone": "positive"
+      },
+      {
+        "title": "Broking firm initiates coverage with Buy rating",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

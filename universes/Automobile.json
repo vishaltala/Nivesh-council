@@ -1,0 +1,39 @@
+{
+  "large": [
+    "MARUTI.NS",
+    "M&M.NS",
+    "TMCV.NS",
+    "TMPV.NS",
+    "MOTHERSON.NS",
+    "BAJAJ-AUTO.NS",
+    "EICHERMOT.NS",
+    "TVSMOTOR.NS",
+    "HEROMOTOCO.NS",
+    "TIINDIA.NS",
+    "BOSCHLTD.NS",
+    "MRF.NS"
+  ],
+  "mid": [
+    "ASHOKLEY.NS",
+    "BALKRISIND.NS",
+    "BHARATFORG.NS",
+    "SONACOMS.NS",
+    "APOLLOTYRE.NS",
+    "EXIDEIND.NS",
+    "CEATLTD.NS",
+    "ARE&M.NS",
+    "ENDURANCE.NS"
+  ],
+  "small": [
+    "KPITTECH.NS",
+    "AUTOAXLES.NS",
+    "TATATECH.NS",
+    "SUPRAJIT.NS",
+    "CIEINDIA.NS",
+    "JBMA.NS",
+    "RICOAUTO.NS",
+    "SUBROS.NS",
+    "LUMAXTECH.NS",
+    "UNOMINDA.NS"
+  ]
+}

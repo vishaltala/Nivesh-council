@@ -1,0 +1,58 @@
+{
+  "symbol": "PIIND.NS",
+  "name": "PI Industries Ltd",
+  "cap_segment": "mid",
+  "sector": "Chemicals",
+  "price": {
+    "live": 3620.0,
+    "day_open": 3710.0,
+    "day_high": 3725.0,
+    "day_low": 3590.0,
+    "prev_close": 3720.5,
+    "day_change_pct": -2.7,
+    "volume": 410000
+  },
+  "range_52w": {
+    "high": 4326.85,
+    "low": 3157.6,
+    "pct_from_high": -16.34,
+    "position_pct": 39.5
+  },
+  "technicals": {
+    "rvol": 0.6,
+    "price_vs_sma_pct": -4.9,
+    "window_return_pct": -3.2,
+    "swing_high": 3900.0,
+    "swing_low": 3540.0,
+    "day_range_position_pct": 22.2,
+    "trend": "down"
+  },
+  "analyst": {
+    "consensus": "hold",
+    "num_analysts": 18,
+    "buy_pct": 50.0,
+    "hold_pct": 39.0,
+    "sell_pct": 11.0,
+    "target_mean": 3800.0,
+    "target_low": 3400.0,
+    "target_high": 4200.0,
+    "upside_pct": 4.97
+  },
+  "news": {
+    "total": 2,
+    "positive": 0,
+    "negative": 2,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "PI Industries export orders soften this quarter",
+        "tone": "negative"
+      },
+      {
+        "title": "Agrochemical pricing pressure weighs on margins",
+        "tone": "negative"
+      }
+    ]
+  },
+  "data_gaps": []
+}

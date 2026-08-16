@@ -1,0 +1,37 @@
+{
+  "large": [
+    "SRF.NS",
+    "PIDILITIND.NS",
+    "LINDEINDIA.NS",
+    "AARTIIND.NS",
+    "ATUL.NS",
+    "DEEPAKNTR.NS",
+    "FLUOROCHEM.NS",
+    "TATACHEM.NS",
+    "SOLARINDS.NS"
+  ],
+  "mid": [
+    "CLEAN.NS",
+    "GALAXYSURF.NS",
+    "NAVINFLUOR.NS",
+    "FINPIPE.NS",
+    "SUDARSCHEM.NS",
+    "ROSSARI.NS",
+    "NOCIL.NS",
+    "BALAMINES.NS",
+    "ALKYLAMINE.NS",
+    "VALIANTORG.NS"
+  ],
+  "small": [
+    "NEOGEN.NS",
+    "AETHER.NS",
+    "ANURAS.NS",
+    "FINEORG.NS",
+    "ACUTAAS.NS",
+    "BHAGERIA.NS",
+    "SADHNANIQ.NS",
+    "EXCELINDUS.NS",
+    "CHEMCON.NS",
+    "KIRIINDUS.NS"
+  ]
+}

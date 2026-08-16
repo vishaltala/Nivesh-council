@@ -1,0 +1,62 @@
+{
+  "symbol": "HAPPSTMNDS.NS",
+  "name": "Happiest Minds Technologies",
+  "cap_segment": "small",
+  "sector": "IT Services",
+  "price": {
+    "live": 755.6,
+    "day_open": 793.0,
+    "day_high": 800.0,
+    "day_low": 748.0,
+    "prev_close": 798.3,
+    "day_change_pct": -5.35,
+    "volume": 1400000
+  },
+  "range_52w": {
+    "high": 1145.0,
+    "low": 590.15,
+    "pct_from_high": -34.01,
+    "position_pct": 29.8
+  },
+  "technicals": {
+    "rvol": 1.8,
+    "price_vs_sma_pct": -6.2,
+    "window_return_pct": -8.1,
+    "swing_high": 890.0,
+    "swing_low": 730.0,
+    "day_range_position_pct": 14.6,
+    "trend": "down"
+  },
+  "analyst": {
+    "consensus": "hold",
+    "num_analysts": 12,
+    "buy_pct": 42.0,
+    "hold_pct": 38.0,
+    "sell_pct": 20.0,
+    "target_mean": 780.0,
+    "target_low": 650.0,
+    "target_high": 920.0,
+    "upside_pct": 3.23
+  },
+  "news": {
+    "total": 3,
+    "positive": 0,
+    "negative": 2,
+    "neutral": 1,
+    "recent": [
+      {
+        "title": "Happiest Minds guidance trimmed for FY",
+        "tone": "negative"
+      },
+      {
+        "title": "Client concentration risk flagged by analysts",
+        "tone": "negative"
+      },
+      {
+        "title": "Deal wins in digital transformation continue",
+        "tone": "neutral"
+      }
+    ]
+  },
+  "data_gaps": []
+}

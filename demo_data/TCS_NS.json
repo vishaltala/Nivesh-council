@@ -1,0 +1,62 @@
+{
+  "symbol": "TCS.NS",
+  "name": "Tata Consultancy Services",
+  "cap_segment": "large",
+  "sector": "IT Services",
+  "price": {
+    "live": 3810.2,
+    "day_open": 3850.0,
+    "day_high": 3862.0,
+    "day_low": 3790.0,
+    "prev_close": 3855.6,
+    "day_change_pct": -1.18,
+    "volume": 3100000
+  },
+  "range_52w": {
+    "high": 4592.25,
+    "low": 3500.0,
+    "pct_from_high": -17.03,
+    "position_pct": 28.4
+  },
+  "technicals": {
+    "rvol": 0.8,
+    "price_vs_sma_pct": -3.1,
+    "window_return_pct": -4.5,
+    "swing_high": 4050.0,
+    "swing_low": 3780.0,
+    "day_range_position_pct": 28.1,
+    "trend": "down"
+  },
+  "analyst": {
+    "consensus": "hold",
+    "num_analysts": 42,
+    "buy_pct": 48.0,
+    "hold_pct": 35.0,
+    "sell_pct": 17.0,
+    "target_mean": 3900.0,
+    "target_low": 3400.0,
+    "target_high": 4300.0,
+    "upside_pct": 2.36
+  },
+  "news": {
+    "total": 3,
+    "positive": 1,
+    "negative": 2,
+    "neutral": 0,
+    "recent": [
+      {
+        "title": "TCS deal pipeline softens amid client budget cuts",
+        "tone": "negative"
+      },
+      {
+        "title": "TCS downgrade cites weak discretionary spend",
+        "tone": "negative"
+      },
+      {
+        "title": "Attrition rate ticks down for third straight quarter",
+        "tone": "positive"
+      }
+    ]
+  },
+  "data_gaps": []
+}

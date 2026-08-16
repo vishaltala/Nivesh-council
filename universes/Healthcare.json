@@ -1,0 +1,37 @@
+{
+  "large": [
+    "SUNPHARMA.NS",
+    "CIPLA.NS",
+    "DRREDDY.NS",
+    "APOLLOHOSP.NS",
+    "DIVISLAB.NS",
+    "ZYDUSLIFE.NS",
+    "MANKIND.NS",
+    "TORNTPHARM.NS",
+    "LUPIN.NS",
+    "AUROPHARMA.NS"
+  ],
+  "mid": [
+    "MAXHEALTH.NS",
+    "ALKEM.NS",
+    "ABBOTINDIA.NS",
+    "GLENMARK.NS",
+    "FORTIS.NS",
+    "BIOCON.NS",
+    "LAURUSLABS.NS",
+    "IPCALAB.NS",
+    "SYNGENE.NS",
+    "PPLPHARMA.NS"
+  ],
+  "small": [
+    "YATHARTH.NS",
+    "THYROCARE.NS",
+    "SHALBY.NS",
+    "ARTEMISMED.NS",
+    "AGARWALEYE.NS",
+    "INDRAMEDCO.NS",
+    "KRSNAA.NS",
+    "PANACEABIO.NS",
+    "JLHL.NS"
+  ]
+}

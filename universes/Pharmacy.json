@@ -1,0 +1,28 @@
+{
+  "large": [
+    "APOLLOHOSP.NS",
+    "MAXHEALTH.NS",
+    "FORTIS.NS",
+    "MEDANTA.NS",
+    "ASTERDM.NS",
+    "NH.NS"
+  ],
+  "mid": [
+    "METROPOLIS.NS",
+    "LALPATHLAB.NS",
+    "KIMS.NS",
+    "SYNGENE.NS",
+    "SHALBY.NS",
+    "RAINBOW.NS"
+  ],
+  "small": [
+    "YATHARTH.NS",
+    "THYROCARE.NS",
+    "ARTEMISMED.NS",
+    "AGARWALEYE.NS",
+    "INDRAMEDCO.NS",
+    "KRSNAA.NS",
+    "JLHL.NS",
+    "KOVAI.NS"
+  ]
+}

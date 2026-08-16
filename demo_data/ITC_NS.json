@@ -1,0 +1,62 @@
+{
+  "symbol": "ITC.NS",
+  "name": "ITC Ltd",
+  "cap_segment": "large",
+  "sector": "FMCG",
+  "price": {
+    "live": 412.3,
+    "day_open": 427.0,
+    "day_high": 429.0,
+    "day_low": 409.5,
+    "prev_close": 428.9,
+    "day_change_pct": -3.87,
+    "volume": 12100000
+  },
+  "range_52w": {
+    "high": 528.0,
+    "low": 399.6,
+    "pct_from_high": -21.91,
+    "position_pct": 9.9
+  },
+  "technicals": {
+    "rvol": 2.1,
+    "price_vs_sma_pct": -5.4,
+    "window_return_pct": -6.8,
+    "swing_high": 445.0,
+    "swing_low": 405.0,
+    "day_range_position_pct": 14.4,
+    "trend": "down"
+  },
+  "analyst": {
+    "consensus": "hold",
+    "num_analysts": 30,
+    "buy_pct": 52.0,
+    "hold_pct": 30.0,
+    "sell_pct": 18.0,
+    "target_mean": 430.0,
+    "target_low": 380.0,
+    "target_high": 470.0,
+    "upside_pct": 4.29
+  },
+  "news": {
+    "total": 3,
+    "positive": 0,
+    "negative": 2,
+    "neutral": 1,
+    "recent": [
+      {
+        "title": "ITC cigarette volumes flat amid tax uncertainty",
+        "tone": "negative"
+      },
+      {
+        "title": "FMCG segment growth disappoints analysts",
+        "tone": "negative"
+      },
+      {
+        "title": "Hotels demerger value unlocking still pending",
+        "tone": "neutral"
+      }
+    ]
+  },
+  "data_gaps": []
+}

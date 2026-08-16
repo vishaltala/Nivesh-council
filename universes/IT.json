@@ -1,0 +1,38 @@
+{
+  "large": [
+    "TCS.NS",
+    "INFY.NS",
+    "HCLTECH.NS",
+    "WIPRO.NS",
+    "TECHM.NS",
+    "LTM.NS",
+    "OFSS.NS",
+    "MPHASIS.NS",
+    "COFORGE.NS",
+    "PERSISTENT.NS"
+  ],
+  "mid": [
+    "LTTS.NS",
+    "TATATECH.NS",
+    "KPITTECH.NS",
+    "BSOFT.NS",
+    "SONATSOFTW.NS",
+    "ZENSARTECH.NS",
+    "AFFLE.NS",
+    "FSL.NS",
+    "INTELLECT.NS",
+    "NEWGEN.NS"
+  ],
+  "small": [
+    "KSOLVES.NS",
+    "NETWEB.NS",
+    "DATAMATICS.NS",
+    "SAKSOFT.NS",
+    "KELLTONTEC.NS",
+    "HAPPSTMNDS.NS",
+    "EXPLEOSOL.NS",
+    "CYBERTECH.NS",
+    "NUCLEUS.NS",
+    "QUICKHEAL.NS"
+  ]
+}
