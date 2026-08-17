@@ -9,6 +9,7 @@ __pycache__/
 # Local runtime data / generated output
 agent_dashboard.db
 buy_logs/
+launchd.log
 
 # OS junk
 .DS_Store

@@ -77,7 +77,8 @@ See `.env.example` for the full list: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`,
 `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` (optional), `LLM_PROVIDER`, `BRAND`,
 `CONFIDENCE_THRESHOLD` (default 7), `AGENT_DELAY` (visual pacing, default 0.35s),
 `SHORTLIST_PERCENT` (default 40), `PORT` (default 5000), `SL_PERCENT` (default 3),
-`RISK_REWARD_RATIO` (default 2.5), `BUY_LOG_RETENTION_DAYS` (default 30).
+`RISK_REWARD_RATIO` (default 2.5), `BUY_LOG_RETENTION_DAYS` (default 30),
+`SCHEDULE_ENABLED` / `SCHEDULE_TIME` / `SCHEDULE_MODE` (see "Scheduled run" below).
 
 `SHORTLIST_PERCENT` controls how many stocks Scout sends to the debate: it takes
 this % of each cap-segment bucket (large/mid/small), rounded, ranked by today's
@@ -134,6 +135,72 @@ Telegram delivery. The picked sector and its % move are recorded in
 `STATE["auto_pick"]` for the dashboard footer, and flow through to the
 `Sector:` line in Telegram/`buy_logs` the same way a manually-picked Live
 set does.
+
+## Scheduled run
+
+Set `SCHEDULE_ENABLED=true` in `.env` (only takes effect when running via
+`python app.py`, not needed for local testing) to have the app fire one run
+automatically every weekday at `SCHEDULE_TIME` (24h, IST — default `09:20`),
+using whichever mode `SCHEDULE_MODE` names (`demo` | `live` | `auto`; default
+`auto`, so by default it's "fire Auto mode at 9:20am every trading day").
+
+This is a small background thread (`_scheduler_loop()` in `app.py`), not a
+new dependency. It polls every 30 seconds using real wall-clock time
+(`datetime.now()`) rather than one long `time.sleep()` spanning the whole
+wait — a long sleep isn't reliable across a real system sleep/wake cycle
+(e.g. the laptop was actually asleep, not just screen-off, for part of the
+wait), so a short poll loop that re-checks the actual clock every 30s
+self-corrects regardless. It fires if the current time is at or up to
+`SCHEDULE_GRACE_MINUTES` (10) past `SCHEDULE_TIME` — covering the time a
+scheduled OS wake takes to actually resume everything — and only once per
+calendar day, tracked so it can't double-fire while polling through that
+window. It skips weekends, and never fires on top of an already-running
+cycle (checks `STATE["running"]` first). One iteration's error can't take
+down future scheduled runs; it's caught and the loop just waits and tries
+again.
+
+Since this runs unattended, a fired BUY signal sends a real Telegram message
+the same as a manual run would — that's the point, but worth knowing before
+turning it on.
+
+### Running fully unattended overnight (macOS)
+
+`SCHEDULE_ENABLED` only fires *inside* the app — it does nothing if the app
+isn't running, and does nothing if the Mac is asleep. To get a genuinely
+hands-off setup (Mac asleep overnight, everything happens on its own), you
+need two more pieces, both outside this repo since they're OS-level, not
+part of the app:
+
+1. **Wake the Mac itself**, since a sleeping Mac runs no code at all:
+   ```bash
+   sudo pmset repeat wakeorpoweron MTWRF 07:50:00
+   ```
+   (time is in your Mac's own local timezone, not IST — see below)
+
+2. **Auto-start the app**, since waking the Mac doesn't launch anything by
+   itself — a macOS LaunchAgent handles this. `start_app.sh` (in this repo)
+   is what it runs; it skips launching if the app's already running, so it
+   can never cause a "port already in use" conflict with a copy you started
+   yourself. The LaunchAgent definition itself lives outside the repo, at
+   `~/Library/LaunchAgents/com.niveshcouncil.autostart.plist` (it's a
+   per-machine system file, similar in spirit to a cron job), with a
+   `StartCalendarInterval` entry for each weekday.
+
+**Three different times are involved, and they use two different time
+standards — worth being deliberate about:**
+
+| # | What | Where | Time standard |
+|---|---|---|---|
+| 1 | Mac wakes up | `pmset` (macOS, not a project file) | Mac's own local timezone |
+| 2 | App auto-starts | the LaunchAgent `.plist` (macOS, not a project file) | Mac's own local timezone |
+| 3 | App checks the market | `SCHEDULE_TIME` in `.env` | **Always IST** — hardcoded via `IST = ZoneInfo("Asia/Kolkata")` at the top of `app.py`, regardless of the Mac's own timezone |
+
+#1 and #2 are plain macOS tools with no concept of India — they only know
+the Mac's own clock. #3 is this app's own code, and it's deliberately
+independent of the Mac's timezone since the point is checking an Indian
+market. This means #1 and #2 need to be *manually* converted to match #3 and
+kept in sync by hand — changing `SCHEDULE_TIME` doesn't update `pmset` or the
+LaunchAgent automatically, since neither of those knows this app exists.
 
 ## Swapping the data source
 

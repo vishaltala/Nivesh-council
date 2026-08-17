@@ -8,7 +8,7 @@ import re
 import sqlite3
 import threading
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import requests
@@ -736,7 +736,57 @@ def start():
     return jsonify({"ok": True})
 
 
+SCHEDULE_GRACE_MINUTES = 10  # how late a fire can still count as "on time" after waking from sleep
+
+
+def _scheduler_loop():
+    """Background loop: fires config.SCHEDULE_MODE (default "auto") once a day at
+    config.SCHEDULE_TIME (IST), Monday-Friday only — NSE doesn't trade weekends.
+    Skips firing if a cycle is already running rather than queuing/overlapping.
+
+    Polls every 30s using real wall-clock time (datetime.now()) rather than one
+    long time.sleep() spanning the whole wait — a long sleep() is not reliable
+    across a real system sleep/wake cycle (e.g. the laptop was actually asleep,
+    not just screen-off, for part of that wait). A short poll loop self-corrects
+    every 30s regardless of how any single wait behaved. If the machine wakes up
+    a few minutes late, it still fires as long as it's within
+    SCHEDULE_GRACE_MINUTES of the target — covers the time a scheduled OS wake
+    (e.g. `pmset repeat wakeorpoweron`) takes to actually resume everything.
+
+    Runs for the lifetime of the process; any single iteration's error is
+    swallowed so it can't take down future scheduled runs."""
+    last_fired_date = None
+    while True:
+        try:
+            now = datetime.now(IST)
+            hour, minute = map(int, config.SCHEDULE_TIME.split(":"))
+            target_today = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            in_window = target_today <= now <= target_today + timedelta(minutes=SCHEDULE_GRACE_MINUTES)
+
+            if in_window and last_fired_date != now.date():
+                last_fired_date = now.date()  # only ever fire once per calendar day
+                if now.weekday() >= 5:  # Monday=0 ... Friday=4
+                    print(f"[scheduler] {now.strftime('%Y-%m-%d %H:%M')} IST — skipped, it's the weekend", flush=True)
+                else:
+                    with STATE_LOCK:
+                        already_running = STATE["running"]
+                    if already_running:
+                        print(f"[scheduler] {now.strftime('%Y-%m-%d %H:%M')} IST — skipped, a run is already in progress", flush=True)
+                    else:
+                        print(f"[scheduler] {now.strftime('%Y-%m-%d %H:%M')} IST — firing scheduled '{config.SCHEDULE_MODE}' run now", flush=True)
+                        threading.Thread(
+                            target=run_cycle, args=(config.SCHEDULE_MODE, None), daemon=True
+                        ).start()
+
+            time.sleep(30)
+        except Exception:
+            time.sleep(30)
+
+
 if __name__ == "__main__":
     init_db()
     cleanup_old_buy_logs()
+    if config.SCHEDULE_ENABLED:
+        threading.Thread(target=_scheduler_loop, daemon=True).start()
+        print(f"Scheduled run enabled: {config.SCHEDULE_MODE} mode at {config.SCHEDULE_TIME} IST, Mon-Fri", flush=True)
     app.run(host="127.0.0.1", port=config.PORT, debug=False, threaded=True)

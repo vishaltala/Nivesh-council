@@ -42,3 +42,8 @@ RISK_REWARD_RATIO = float(os.environ.get("RISK_REWARD_RATIO", "2.5"))
 
 # How long to keep buy_logs/*.txt audit dumps before auto-deleting them.
 BUY_LOG_RETENTION_DAYS = int(os.environ.get("BUY_LOG_RETENTION_DAYS", "30"))
+
+# --- Scheduled run (optional) — fires one run automatically each weekday ---
+SCHEDULE_ENABLED = os.environ.get("SCHEDULE_ENABLED", "false").strip().lower() in ("1", "true", "yes")
+SCHEDULE_TIME = os.environ.get("SCHEDULE_TIME", "09:20").strip()  # HH:MM, 24h, IST
+SCHEDULE_MODE = os.environ.get("SCHEDULE_MODE", "auto").strip().lower()  # demo | live | auto
