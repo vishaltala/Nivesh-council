@@ -48,7 +48,12 @@ Analysis only. No trades are ever placed. Not investment advice.
    - Use **Demo** mode first — it loads pre-built evidence bundles from
      `demo_data/*.json` and runs fully offline.
    - Use **Live** mode during NSE market hours (Mon–Fri, 09:15–15:30 IST) to
-     pull real data via `yfinance` for the tickers in `universe.json`.
+     pull real data via `yfinance` for whichever sector set you pick from the
+     `universes/` dropdown (Automobile, IT, FMCG, ...).
+   - Use **Auto** mode to skip picking a sector yourself — it finds today's
+     biggest-moving NSE sectoral index (via `sector_auto.py`) and scans that
+     sector's set automatically, then runs exactly like Live mode from there.
+     See "Auto mode" below for how the sector gets picked.
 
 ## File layout
 
@@ -58,8 +63,9 @@ Analysis only. No trades are ever placed. Not investment advice.
 | `scoring.py` | Deterministic rule-based agent scores + Judge (always-works fallback) |
 | `llm.py` | LLM debate engine — provider auto-detection, prompt, grounding verifier |
 | `data_sources.py` | Demo JSON loader + yfinance adapter + evidence bundle builder + screening |
+| `sector_auto.py` | Auto mode — finds today's biggest-moving NSE sector and picks its `universes/*.json` set |
 | `dashboard.html` | Single self-contained UI (inline CSS/JS, no build step, no external libraries) |
-| `universe.json` | Editable NSE tickers per cap bucket (large / mid / small) for live mode |
+| `universes/*.json` | Editable NSE tickers per sector set, auto-discovered for the Live-mode dropdown and Auto mode |
 | `config.py` | Tiny built-in `.env` loader — no secrets hardcoded anywhere |
 | `demo_data/*.json` | A handful of realistic evidence bundles for offline demo mode |
 | `agent_dashboard.db` | SQLite audit trail of runs + verdicts (created on first run) |
@@ -87,6 +93,47 @@ same formula in `scoring.compute_trade_levels()` — the LLM engine is only allo
 echo the pre-computed numbers back, never generate its own.
 
 The bot token is never printed to logs or the UI.
+
+## Auto mode
+
+`universes/*.json` holds one file per stock set — Live mode's dropdown lets you
+pick one manually. Auto mode picks one *for* you: it finds whichever NSE
+sectoral index moved the most today and scans that sector's set.
+
+`sector_auto.py` does this in two steps:
+
+1. **`fetch_sector_momentum()`** — calls NSE's live sectoral-indices API (the
+   same data behind [NSE's heatmap](https://www.nseindia.com/market-data/live-market-indices/heatmap))
+   and returns all 23 sectors ranked by today's % change, biggest gainer
+   first. NSE blocks requests without a real session, so this first visits
+   the homepage to collect cookies before calling the API — the same
+   approach as the original standalone script this was built from
+   (`~/Desktop/Algo/Indian Stocks/nse_sectoral_indices.py`), now ported into
+   the app itself rather than shelling out to a file outside the project.
+2. **`pick_auto_universe_set()`** — walks that ranked list from the top and
+   picks the first sector that has a matching `universes/*.json` file.
+   Matching isn't naive string equality: NSE's own naming doesn't always
+   match a sensible filename (e.g. the live API returns "NIFTY OIL & GAS"
+   while a natural filename is `NIFTY OIL AND GAS.json`), so it normalizes
+   "&"/"AND" and tries a substring match before giving up on a sector and
+   moving to the next-biggest mover. This was found and fixed by testing
+   against the real API response, not assumed.
+
+If today's single biggest mover doesn't have a matching file (e.g. NSE's
+generic "NIFTY BANK" index moved most, but you only have `NIFTY PSU
+BANK.json` / `NIFTY PVT BANK.json`), it doesn't just fail — it keeps walking
+down the ranked list until it finds a sector you actually have a set for.
+It only gives up, with a clear message surfaced via the run's `notice`
+field, if NSE couldn't be reached at all, or literally none of the 23
+sectors match anything in `universes/`. Auto mode never silently falls back
+to an arbitrary set — same "don't guess" rule as everywhere else in this app.
+
+Once a sector is picked, Auto mode runs exactly like Live mode from there —
+same `data_sources.build_universe_evidence()` call, same scoring, same
+Telegram delivery. The picked sector and its % move are recorded in
+`STATE["auto_pick"]` for the dashboard footer, and flow through to the
+`Sector:` line in Telegram/`buy_logs` the same way a manually-picked Live
+set does.
 
 ## Swapping the data source
 

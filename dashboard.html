@@ -172,6 +172,7 @@
       <select id="modeSelect">
         <option value="demo">Demo (offline)</option>
         <option value="live">Live (yfinance)</option>
+        <option value="auto">Auto (today's top sector)</option>
       </select>
       <select id="universeSelect" style="display:none"></select>
       <button id="startBtn">Start agents</button>
@@ -374,6 +375,11 @@ function renderStatus(s){
   if (f.universe_set){
     const found = (CFG.universe_sets || []).find(u => u.id === f.universe_set);
     footerText += ` · set: ${found ? found.label : f.universe_set}`;
+  }
+  if (f.auto_pick){
+    const pct = f.auto_pick.percent_change;
+    const pctStr = (pct !== null && pct !== undefined) ? `${pct > 0 ? '+' : ''}${pct.toFixed(2)}%` : '';
+    footerText += ` · auto-picked: today's biggest mover (${pctStr})`;
   }
   document.getElementById('footerText').textContent = footerText;
 }

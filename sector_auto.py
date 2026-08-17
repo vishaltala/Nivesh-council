@@ -98,16 +98,26 @@ def fetch_sector_momentum():
     return ranked or None
 
 
+def _normalize_sector_text(text):
+    """NSE's live API and a hand-named universes/*.json file don't always agree on
+    wording — e.g. the real API returns "NIFTY OIL & GAS" while a natural filename
+    is "NIFTY OIL AND GAS.json". Normalize "&" to "AND" (and collapse whitespace)
+    before comparing so this kind of cosmetic difference doesn't break the match."""
+    return " ".join(text.upper().replace("&", "AND").split())
+
+
 def _find_matching_universe_set(sector_name, available_ids):
     """Exact match first (e.g. "NIFTY REALTY" == a "NIFTY REALTY.json" set), then
     a loose substring match either direction (handles a near-miss like "NIFTY
-    HEALTHCARE" vs a file named "NIFTY HEALTHCARE INDEX")."""
-    if sector_name in available_ids:
-        return sector_name
-    sector_upper = sector_name.upper()
+    HEALTHCARE" vs a file named "NIFTY HEALTHCARE INDEX"). Both compared after
+    normalizing "&"/"AND" and whitespace so wording-only differences don't matter."""
+    sector_norm = _normalize_sector_text(sector_name)
     for set_id in available_ids:
-        set_upper = set_id.upper()
-        if sector_upper in set_upper or set_upper in sector_upper:
+        if _normalize_sector_text(set_id) == sector_norm:
+            return set_id
+    for set_id in available_ids:
+        set_norm = _normalize_sector_text(set_id)
+        if sector_norm in set_norm or set_norm in sector_norm:
             return set_id
     return None
 

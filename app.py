@@ -17,6 +17,7 @@ from flask import Flask, jsonify, request, send_from_directory
 import config
 import data_sources
 import llm
+import sector_auto
 
 IST = ZoneInfo("Asia/Kolkata")
 BASE_DIR = __import__("os").path.dirname(__import__("os").path.abspath(__file__))
@@ -53,6 +54,7 @@ def _fresh_state():
         "run_id": None,
         "mode": None,
         "universe_set": None,
+        "auto_pick": None,
         "engine": None,
         "running": False,
         "started_at": None,
@@ -480,10 +482,29 @@ def run_cycle(mode, universe_set=None):
         STATE = _fresh_state()
         STATE["running"] = True
         STATE["mode"] = mode
-        STATE["universe_set"] = universe_set if mode == "live" else None
+        STATE["universe_set"] = universe_set if mode in ("live", "auto") else None
         STATE["started_at"] = now_ist_str()
 
     try:
+        # --- AUTO MODE: pick today's biggest-moving NSE sector automatically ---
+        if mode == "auto":
+            available_ids = [s["id"] for s in data_sources.list_universe_sets()]
+            auto_result = sector_auto.pick_auto_universe_set(available_ids)
+            if auto_result is None:
+                raise RuntimeError(
+                    "Auto mode couldn't reach NSE to find today's top-moving sector "
+                    "— try Live mode with a manual sector instead."
+                )
+            if auto_result["chosen"] is None:
+                raise RuntimeError(
+                    "Auto mode reached NSE, but none of today's sectoral movers match "
+                    "a universes/*.json file you have — try Live mode with a manual sector."
+                )
+            universe_set = auto_result["chosen"]["universe_set"]
+            with STATE_LOCK:
+                STATE["universe_set"] = universe_set
+                STATE["auto_pick"] = auto_result["chosen"]
+
         # --- SCOUT: scan the universe, build shortlist ---
         set_agent("scout", status="working")
 
@@ -551,7 +572,7 @@ def run_cycle(mode, universe_set=None):
         created_at = now_ist_str()
 
         universe_set_label = None
-        if mode == "live" and universe_set:
+        if mode in ("live", "auto") and universe_set:
             universe_set_label = next(
                 (s["label"] for s in data_sources.list_universe_sets() if s["id"] == universe_set),
                 universe_set,
@@ -651,6 +672,7 @@ def run_cycle(mode, universe_set=None):
                 "data_timestamp": STATE["finished_at"],
                 "engine": run_engine,
                 "universe_set": STATE["universe_set"],
+                "auto_pick": STATE["auto_pick"],
             }
             if telegram_notice:
                 STATE["notice"] = f"Telegram: {telegram_notice}"
@@ -680,7 +702,7 @@ def get_config():
         "agents": AGENTS,
         "confidence_threshold": config.CONFIDENCE_THRESHOLD,
         "shortlist_percent": config.SHORTLIST_PERCENT,
-        "modes": ["demo", "live"],
+        "modes": ["demo", "live", "auto"],
         "universe_sets": data_sources.list_universe_sets(),
     })
 
@@ -695,13 +717,17 @@ def status():
 def start():
     body = request.get_json(silent=True) or {}
     mode = body.get("mode", "demo")
-    if mode not in ("demo", "live"):
+    if mode not in ("demo", "live", "auto"):
         mode = "demo"
 
-    universe_set = body.get("universe_set")
-    available_ids = [s["id"] for s in data_sources.list_universe_sets()]
-    if universe_set not in available_ids:
-        universe_set = available_ids[0] if available_ids else None
+    universe_set = None
+    if mode == "live":
+        # Auto mode picks its own set once the run starts (sector_auto.py) — no
+        # need to default one here, it'd just get overwritten immediately.
+        universe_set = body.get("universe_set")
+        available_ids = [s["id"] for s in data_sources.list_universe_sets()]
+        if universe_set not in available_ids:
+            universe_set = available_ids[0] if available_ids else None
 
     with STATE_LOCK:
         if STATE["running"]:
