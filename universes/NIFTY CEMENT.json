@@ -1,0 +1,25 @@
+{
+  "large": [
+    "ULTRACEMCO.NS",
+    "GRASIM.NS",
+    "AMBUJACEM.NS",
+    "SHREECEM.NS",
+    "JKCEMENT.NS",
+    "DALBHARAT.NS"
+  ],
+  "mid": [
+    "RAMCOCEM.NS",
+    "ACC.NS",
+    "NUVOCO.NS",
+    "BIRLACORPN.NS",
+    "JKLAKSHMI.NS",
+    "HEIDELBERG.NS"
+  ],
+  "small": [
+    "INDIACEM.NS",
+    "PRSMJOHNSN.NS",
+    "ORIENTCEM.NS",
+    "STARCEMENT.NS",
+    "JSWCEMENT.NS"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "large": [
+    "RELIANCE.NS",
+    "ONGC.NS",
+    "IOC.NS",
+    "BPCL.NS",
+    "GAIL.NS",
+    "HINDPETRO.NS"
+  ],
+  "mid": [
+    "OIL.NS",
+    "PETRONET.NS",
+    "IGL.NS",
+    "MGL.NS",
+    "AEGISLOG.NS",
+    "GSPL.NS",
+    "GUJGASLTD.NS"
+  ],
+  "small": [
+    "CHENNPETRO.NS",
+    "ATGL.NS",
+    "AEGISVOPAK.NS",
+    "CASTROLIND.NS",
+    "MRPL.NS"
+  ]
+}
