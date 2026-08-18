@@ -186,21 +186,36 @@ part of the app:
    per-machine system file, similar in spirit to a cron job), with a
    `StartCalendarInterval` entry for each weekday.
 
-**Three different times are involved, and they use two different time
+3. **Auto-stop the app** (optional), once the day's check is done —
+   `stop_app.sh` (in this repo) finds whatever's listening on port 5000 and
+   kills it; safe to run even if nothing's there. Wired up the same way, as
+   `~/Library/LaunchAgents/com.niveshcouncil.autostop.plist`.
+
+**Four different times are involved, and they use two different time
 standards — worth being deliberate about:**
 
 | # | What | Where | Time standard |
 |---|---|---|---|
 | 1 | Mac wakes up | `pmset` (macOS, not a project file) | Mac's own local timezone |
-| 2 | App auto-starts | the LaunchAgent `.plist` (macOS, not a project file) | Mac's own local timezone |
+| 2 | App auto-starts | `com.niveshcouncil.autostart.plist` (macOS, not a project file) | Mac's own local timezone |
 | 3 | App checks the market | `SCHEDULE_TIME` in `.env` | **Always IST** — hardcoded via `IST = ZoneInfo("Asia/Kolkata")` at the top of `app.py`, regardless of the Mac's own timezone |
+| 4 | App auto-stops | `com.niveshcouncil.autostop.plist` (macOS, not a project file) | Mac's own local timezone |
 
-#1 and #2 are plain macOS tools with no concept of India — they only know
-the Mac's own clock. #3 is this app's own code, and it's deliberately
+#1, #2, and #4 are plain macOS tools with no concept of India — they only
+know the Mac's own clock. #3 is this app's own code, and it's deliberately
 independent of the Mac's timezone since the point is checking an Indian
-market. This means #1 and #2 need to be *manually* converted to match #3 and
-kept in sync by hand — changing `SCHEDULE_TIME` doesn't update `pmset` or the
-LaunchAgent automatically, since neither of those knows this app exists.
+market. This means #1, #2, and #4 need to be *manually* converted to match
+#3 and kept in sync by hand — changing `SCHEDULE_TIME` doesn't update
+`pmset` or either LaunchAgent automatically, since none of those know this
+app exists.
+
+**#4 needs one more thing kept in sync too: `SCHEDULE_GRACE_MINUTES`**
+(10, set in `app.py`) — the app's own scheduler can fire anywhere up to that
+many minutes after `SCHEDULE_TIME`, to cover a late wake-from-sleep. So #4
+should always be set later than `SCHEDULE_TIME + SCHEDULE_GRACE_MINUTES`,
+with enough extra buffer for the run itself to actually finish — a run that's
+still going gets killed mid-analysis if #4 fires first, silently losing that
+day's signals rather than erroring loudly.
 
 ## Swapping the data source
 
