@@ -13,3 +13,6 @@ launchd.log
 
 # OS junk
 .DS_Store
+
+#Information Text File
+TimeInfo.txt
