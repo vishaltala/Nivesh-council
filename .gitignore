@@ -5,6 +5,7 @@
 venv/
 __pycache__/
 *.pyc
+nse_sectoral_indices.py
 
 # Local runtime data / generated output
 agent_dashboard.db
